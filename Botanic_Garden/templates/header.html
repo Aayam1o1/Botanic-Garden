@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botanic Garden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div id="header-container" class="flex justify-between p-10 items-center h-[5rem] mt-3">
+        
+        <div class=" w-[13rem] ml-10" id="logo">
+            <img src="../static/images/logo3.png" alt="" class="w-full">
+        </div>
+        <div id="search-bar" class="flex justify-between items-center border border-solid  rounded-lg pl-1 pr-1 w-[60%] h-[2.5rem]">
+            <input type="text" name="search-name" placeholder="What plant are you looking for??"  autofocus class="h-full w-full outline-none pl-2 "/>
+            <!-- class="border-solid border-2 border-indigo-900 rounded-lg p-3 mx- auto my-10 w-[500px]"   -->
+            <div class="">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="flex justify-between gap-6 pr-10">
+        <div class="h-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 25 25" fill="none">
+                <path d="M22.7312 7.74063C22.6354 7.60216 22.5075 7.48899 22.3583 7.41079C22.2092 7.3326 22.0434 7.29173 21.875 7.29167H7.63852L6.43644 4.40625C6.27882 4.02628 6.01193 3.70166 5.66959 3.47356C5.32725 3.24546 4.92489 3.12414 4.51352 3.125H2.08331V5.20834H4.51352L9.45519 17.0677C9.53434 17.2575 9.66787 17.4195 9.83896 17.5335C10.0101 17.6475 10.2111 17.7084 10.4166 17.7083H18.75C19.1844 17.7083 19.5729 17.4385 19.726 17.0333L22.851 8.70001C22.9101 8.54232 22.93 8.37266 22.9092 8.20558C22.8883 8.03849 22.8273 7.87895 22.7312 7.74063ZM18.0281 15.625H11.1114L8.50727 9.375H20.3719L18.0281 15.625Z" fill="#4ECB71"/>
+                <path d="M10.9375 21.875C11.8004 21.875 12.5 21.1754 12.5 20.3125C12.5 19.4496 11.8004 18.75 10.9375 18.75C10.0746 18.75 9.375 19.4496 9.375 20.3125C9.375 21.1754 10.0746 21.875 10.9375 21.875Z" fill="#4ECB71"/>
+                <path d="M18.2292 21.875C19.0921 21.875 19.7917 21.1754 19.7917 20.3125C19.7917 19.4496 19.0921 18.75 18.2292 18.75C17.3662 18.75 16.6667 19.4496 16.6667 20.3125C16.6667 21.1754 17.3662 21.875 18.2292 21.875Z" fill="#4ECB71"/>
+                </svg>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4C13.0609 4 14.0783 4.42143 14.8284 5.17157C15.5786 5.92172 16 6.93913 16 8C16 9.06087 15.5786 10.0783 14.8284 10.8284C14.0783 11.5786 13.0609 12 12 12C10.9391 12 9.92172 11.5786 9.17157 10.8284C8.42143 10.0783 8 9.06087 8 8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4ZM12 6C11.4696 6 10.9609 6.21071 10.5858 6.58579C10.2107 6.96086 10 7.46957 10 8C10 8.53043 10.2107 9.03914 10.5858 9.41421C10.9609 9.78929 11.4696 10 12 10C12.5304 10 13.0391 9.78929 13.4142 9.41421C13.7893 9.03914 14 8.53043 14 8C14 7.46957 13.7893 6.96086 13.4142 6.58579C13.0391 6.21071 12.5304 6 12 6ZM12 13C14.67 13 20 14.33 20 17V20H4V17C4 14.33 9.33 13 12 13ZM12 14.9C9.03 14.9 5.9 16.36 5.9 17V18.1H18.1V17C18.1 16.36 14.97 14.9 12 14.9Z" fill="#4ECB71"/>
+                </svg>
+        </div>
+    </div>
+    </div>
+    <div class="flex justify-center items-center gap-6 mt-2">
+        <a href="/"><h1 class="text-2xl hover:text-[#4ECB71]">Home</h1></a>
+        <p class="text-2xl">|</p>
+        <a href="/plants"><h1 class="text-2xl hover:text-[#4ECB71]">Plants</h1></a>
+        <p class="text-2xl">|</p>
+        <h1 class="text-2xl hover:text-[#4ECB71]">Contact Us</h1>
+    </div>
+</body>
+</html>
