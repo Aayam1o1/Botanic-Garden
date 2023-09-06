@@ -1,0 +1,7 @@
+#dropdown-menu{
+    display: none;
+}
+
+#profile:hover #dropdown-menu{
+    display: block;
+}

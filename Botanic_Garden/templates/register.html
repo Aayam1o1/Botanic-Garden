@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <!-- <div class="w-full ml-10 " id="logoRegister">
+        <div class="flex justify-center ">
+            <a href="#"> <img src="../static/images/logo.png" alt="" class="w-[20rem] mr-[12rem]"></a>
+        </div>
+     </div> -->
+    <div class="" id="container2">
+        <div class="mt-20  flex justify-around">
+            <div>
+                <div class="flex items-center justify-center ">
+                    <div class="text-center mr-4">
+                        <h2 class="text-3xl font-bold text-black">
+                            Sign up
+                        </h2>
+                        <p class="mt-2 text-base text-gray-600">
+                                Already have an account?
+                            <a href="#"title="" class="font-medium text-black transition-all duration-200 hover:underline">
+                                Sign In
+                            </a>
+                        </p>
+                        <form action="#" method="POST" class="mt-8">
+                           {% csrf_token %} 
+                            
+                        
+                        <div class="">
+                    
+                            <div class="">
+                                <input
+                                    class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                    type="text"
+                                    name="username"
+                                    placeholder="Username"
+                                    id="username"/>
+                            </div>
+                            <div class="mt-5">
+                            
+                                <div class="mt-2">
+                                    <input
+                                        class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        id="email"/>
+                                </div>
+                          </div>
+                          <div class="mt-5">
+                            
+                            <div class="mt-2">
+                                <input
+                                    class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                    type="password"
+                                    name="password"
+                                    placeholder="password"
+                                    id="password"/>
+                            </div>
+                        </div>
+                            <div class="mt-5">
+                                <div class="mt-2">
+                                    <input
+                                        class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                        type="password"
+                                        name="rePassword"
+                                        placeholder="Re-enter password"
+                                        id="rePassword"/>
+                                </div>
+                        </div>
+                        
+                            <div class="mt-5 mb-[6rem]">
+                                <button
+                                    type="submit" class="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-5 text-white hover:bg-black/80">Create Account
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"S
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="ml-2"
+                                    >
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>   
+                          </div>
+                        </form>    
+                        </div>
+                    
+                    </div>          
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}
+</body>
+</html>
