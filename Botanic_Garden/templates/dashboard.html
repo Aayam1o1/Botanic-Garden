@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- rohan ko copy gareko code -->
+<div class="container  mx-auto mt-[6rem]">
+        <div class="flex justify-around w-[90%] ml-[6rem]">
+         
+            <div class="text-center bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg shadow-lg p-6 w-[23rem]">
+                <h2 class="text-lg font-semibold text-white">Total Sales</h2>
+                <p class="text-2xl font-bold mt-2 text-white">$0</p>
+            </div>
+            
+            <div class="text-center bg-gradient-to-br from-green-500 to-blue-500 rounded-lg shadow-lg p-6 w-[23rem]">
+                <h2 class="text-lg font-semibold text-white">Items Sold</h2>
+                <p class="text-2xl font-bold mt-2 text-white">0</p>
+            </div>
+
+            <div class="text-center bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg shadow-lg p-6 w-[23rem]">
+                <h2 class="text-lg font-semibold text-white">Total Items</h2>
+                <p class="text-2xl font-bold mt-2 text-white">0</p>
+            </div>
+        </div>
+</div>
+
+<div id="container" class="flex mt-[4rem]">
+    <div class="w-[30%] ml-[3rem]" id="container2" >
+        <div class="flex-col justify-around items-center w-[30rem] " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;">
+            <div>
+                <h1 class="text-1xl text-[#B6B6B6] text-center">Market Place</h1>
+            </div>
+            <div>
+                <h1 class="text-3xl text-[#4ECB71] mt-2 text-center">Sell your plant</h1>
+            </div>
+            <div id="user" class="mt-[2rem] ml-[5rem] mb-[4rem] text-center pr-[4rem] flex justify-around h-[6rem] ">
+                <div class="border-4 border-[#B6B6B6] rounded-full">
+                    <img src="../static/images/customer2.svg" alt="" class="h-[6rem] w-[6rem] rounded-full pb-3">
+                </div>
+                <div class="text-center pr-[2rem] pt-[2rem]">
+                    <p>Geeta Shrestha</p>
+                </div>
+            </div>
+
+            <div id="title" class="">
+                <div>
+                    <h1 class="mb-2 ml-[7rem]">Plant name</h1>
+                </div>
+                <div class=" border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem]">
+                    <input type="text"  name="search-name" placeholder="What plant are you looking for??"  autofocus class="h-full w-full outline-none pl-2 ">
+                </div>
+            </div>
+            
+            <div id="price" class="mt-7">
+                <div>
+                    <h1 class="mb-2 ml-[7rem]">Price</h1>
+                </div>
+                <div class=" border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem]">
+                    <input type="text"  name="search-name" placeholder="Amount"  autofocus class="h-full w-full outline-none pl-2 ">
+                </div>
+            </div>
+
+            <div id="price" class="mt-7 mb-10">
+                <div>
+                    <h1 class="mb-2 ml-[7rem]">Category</h1>
+                </div>
+                <div class="w-90% ml-[6.5rem]">
+
+                    <ul class="w-[77%]  text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center pl-3">
+                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
+                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Indoor</label>
+                            </div>
+                        </li>
+                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center pl-3">
+                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
+                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Outdoor</label>
+                            </div>
+                        </li>
+                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center pl-3">
+                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
+                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tropical</label>
+                            </div>
+                        </li>
+                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center pl-3">
+                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
+                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pet Friendly</label>
+                            </div>
+                        </li>
+                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center pl-3">
+                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
+                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Easy care</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="image" class="ml-[6rem] mt-5 border-2 border-solid w-[60%] h[50%] rounded-lg overflow-hidden">
+                <img src="../static/images/indoor.svg" alt="" class=" w-full h-full">
+            </div>
+            <div class="pb-[2rem]">
+                <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[9.5rem] mt-5 mr-10 h-10 w-40">Add image</button>
+            </div>
+
+           
+        
+            <!-- <div id="uploadImage" class="w-[7rem] ml-[4.5rem] flex justify-around">
+                <img src="../static/images/customer1.svg" alt="">
+                <img src="../static/images/customer1.svg" alt="">
+                <img src="../static/images/customer1.svg" alt="">
+            </div>
+            <div id="button1" class="mt-5  w-full">
+                <button class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mr-10 h-10 w-40">upload Photo</button>
+                <p>Upload upto 3 photos</p>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="w-[30%] ml-[8rem]" id="container2">
+        <div>
+            <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Plant review</h1>
+        </div>
+        
+        <div class="h-[20rem] w-[22rem]">
+            <div class=" rounded-md md:aspect-auto w-[100%] h[60%%] rounded-lg overflow-hidden">
+                <img
+                  src="../static/images/indoor.svg"
+                  alt="AirMax Pro"
+                  class="z-0 h-full w-full rounded-md object-cover"/>
+
+                
+                <div class=" left-4 text-left">
+                  <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+                  <p class="mt-2 text-sm ">Rs 1000</p>
+                  <p class="mt-2 text-sm">Indoor</p>
+                  <p class="mt-2 text-sm text-gray-300">
+                    The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+                  </p>
+                  <div class="pb-[2rem]">
+                    <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[5rem] mt-10 mr-10 h-10 w-40">Put for Sale</button>
+                </div>
+                </div>
+              </div>
+        </div>
+        
+    </div>
+    <div id="description"  >
+        <div>
+            <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Add description</h1>
+        </div>
+        <div class=" border-2 border-solid rounded-lg ml-[3rem] w-[20rem] h-[40vh]">
+            <textarea type="textarea"  name="search-name" placeholder="Descriptiono of plant"  autofocus class="h-full w-full outline-none pl-2 "></textarea>
+        </div>
+        <div class="pb-[5rem]">
+            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[9rem] mt-10 mr-10 h-10 w-40">Add description</button>
+        </div>
+    </div>
+</div>   
+                
+
+
+{% endblock %}
+</body>
+</html>

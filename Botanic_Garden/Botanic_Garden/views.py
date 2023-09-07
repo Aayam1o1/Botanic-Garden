@@ -11,7 +11,7 @@ def homePage(request):
     
     return render(request, "homePage.html")
 
-@login_required(login_url='login')
+
 def plants(request):
 
     return render(request, "plants.html")
@@ -55,3 +55,7 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('login')
+
+@login_required(login_url='login')
+def dashboard(request):
+    return render(request, "dashboard.html")
