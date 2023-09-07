@@ -53,7 +53,7 @@
                     <h1 class="mb-2 ml-[7rem]">Plant name</h1>
                 </div>
                 <div class=" border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem]">
-                    <input type="text"  name="search-name" placeholder="What plant are you looking for??"  autofocus class="h-full w-full outline-none pl-2 ">
+                    <input type="text"  name="search-name" placeholder="Plant Name"  autofocus class="h-full w-full outline-none pl-2 ">
                 </div>
             </div>
             
@@ -133,27 +133,27 @@
             <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Plant review</h1>
         </div>
         
-        <div class="h-[20rem] w-[22rem]">
-            <div class=" rounded-md md:aspect-auto w-[100%] h[60%%] rounded-lg overflow-hidden">
+        <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+            <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
                 <img
-                  src="../static/images/indoor.svg"
-                  alt="AirMax Pro"
-                  class="z-0 h-full w-full rounded-md object-cover"/>
-
-                
-                <div class=" left-4 text-left">
+              src="../static/images/indoor.svg"
+              alt="AirMax Pro"
+              class="z-0 h-full w-full rounded-md object-cover"/>
+            </div>
+              
+                <div class="  text-left">
                   <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
                   <p class="mt-2 text-sm ">Rs 1000</p>
                   <p class="mt-2 text-sm">Indoor</p>
                   <p class="mt-2 text-sm text-gray-300">
-                    The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
-                  </p>
-                  <div class="pb-[2rem]">
-                    <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[5rem] mt-10 mr-10 h-10 w-40">Put for Sale</button>
+                      The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+                    </p>
+                    <div class="flex justify-between">
+                        <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[2rem] mt-10 mr-10 h-10 w-[50rem]">Add to Sell</button>
+                    </div>
                 </div>
-                </div>
-              </div>
-        </div>
+            
+          </div> 
         
     </div>
     <div id="description"  >
@@ -161,16 +161,109 @@
             <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Add description</h1>
         </div>
         <div class=" border-2 border-solid rounded-lg ml-[3rem] w-[20rem] h-[40vh]">
-            <textarea type="textarea"  name="search-name" placeholder="Descriptiono of plant"  autofocus class="h-full w-full outline-none pl-2 "></textarea>
+            <textarea type="textarea"  name="search-name" placeholder="Description of plant"  autofocus class="h-full w-full outline-none pl-2 "></textarea>
         </div>
         <div class="pb-[5rem]">
             <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[9rem] mt-10 mr-10 h-10 w-40">Add description</button>
         </div>
     </div>
-</div>   
-                
+</div>  
 
+<div class="" id="container4">
+    <div id="feedback" class="mt-[7rem] mb-20">
+        <div class="text-center text-5xl mb-10">
+            <h1>Your Plants</h1>
+        </div>
+        <div class="grid grid-cols-4 gap-6 mx-[2rem]">
+            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
+                    <img
+                  src="../static/images/indoor.svg"
+                  alt="AirMax Pro"
+                  class="z-0 h-full w-full rounded-md object-cover"/>
+                </div>
+                  
+                    <div class="  text-left">
+                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+                      <p class="mt-2 text-sm ">Rs 1000</p>
+                      <p class="mt-2 text-sm">Indoor</p>
+                      <p class="mt-2 text-sm text-gray-300">
+                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+                        </p>
+                        <div class="pb-[2rem] flex justify-between">
+                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
+                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
+                        </div>
+                    </div>
+            </div>
+            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
+                    <img
+                  src="../static/images/indoor.svg"
+                  alt="AirMax Pro"
+                  class="z-0 h-full w-full rounded-md object-cover"/>
+                </div>
+                  
+                    <div class="  text-left">
+                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+                      <p class="mt-2 text-sm ">Rs 1000</p>
+                      <p class="mt-2 text-sm">Indoor</p>
+                      <p class="mt-2 text-sm text-gray-300">
+                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+                        </p>
+                        <div class="pb-[2rem] flex justify-between">
+                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
+                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
+                        </div>
+                    </div>
+            </div>
+            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
+                    <img
+                  src="../static/images/indoor.svg"
+                  alt="AirMax Pro"
+                  class="z-0 h-full w-full rounded-md object-cover"/>
+                </div>
+                  
+                    <div class="  text-left">
+                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+                      <p class="mt-2 text-sm ">Rs 1000</p>
+                      <p class="mt-2 text-sm">Indoor</p>
+                      <p class="mt-2 text-sm text-gray-300">
+                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+                        </p>
+                        <div class="pb-[2rem] flex justify-between">
+                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
+                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
+                        </div>
+                    </div>
+            </div>
+            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
+                    <img
+                  src="../static/images/indoor.svg"
+                  alt="AirMax Pro"
+                  class="z-0 h-full w-full rounded-md object-cover"/>
+                </div>
+                  
+                    <div class="  text-left">
+                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+                      <p class="mt-2 text-sm ">Rs 1000</p>
+                      <p class="mt-2 text-sm">Indoor</p>
+                      <p class="mt-2 text-sm text-gray-300">
+                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+                        </p>
+                        <div class="pb-[2rem] flex justify-between">
+                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
+                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+    
 {% endblock %}
 </body>
 </html>

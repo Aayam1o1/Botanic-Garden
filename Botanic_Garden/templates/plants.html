@@ -4,89 +4,168 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script>
+
+    // Custom function to display and keep the value in a tooltip
+    function updateValue() {
+      const valueSlider = document.getElementById('valueSlider');
+      const valuePopup = document.getElementById('valuePopup');
+      const value = valueSlider.value;
+      valuePopup.textContent = `Rs${value}`;
+      valuePopup.style.left = `${(value / 20000) * 100}%`;
+      console.log("message")
+    }
+
+    // Attach the custom function to the input event
+    const valueSlider = document.getElementById('valueSlider');
+    valueSlider.addEventListener('input', updateValue);
+
+    // Display the tooltip initially when the page loads
+    window.addEventListener('DOMContentLoaded', updateValue);
+  </script>
   
 </head>
 <body>
 {% extends 'base.html' %}
 {% block content %}
-  <div class="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
-    <div class="relative aspect-[16/9]  w-auto rounded-md md:aspect-auto md:h-[400px]">
-      <img
-        src="https://images.unsplash.com/photo-1588099768531-a72d4a198538?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NnwxMTM4MTU1NXx8ZW58MHx8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-        alt="AirMax Pro"
-        class="z-0 h-full w-full rounded-md object-cover"
-      />
-      <div class="absolute inset-0 rounded-md bg-gradient-to-t from-gray-900 to-transparent"></div>
-      <div class="absolute bottom-4 left-4 text-left">
-        <h1 class="text-lg font-semibold text-white">Nike Airmax v2</h1>
-        <p class="mt-2 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-          debitis?
-        </p>
-        <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-          Shop Now →
-        </button>
-      </div>
-    </div>
-    <div class="relative aspect-[16/9]  w-auto rounded-md md:aspect-auto md:h-[400px]">
-      <img
-        src="https://images.unsplash.com/photo-1588099768531-a72d4a198538?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NnwxMTM4MTU1NXx8ZW58MHx8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-        alt="AirMax Pro"
-        class="z-0 h-full w-full rounded-md object-cover"
-      />
-      <div class="absolute inset-0 rounded-md bg-gradient-to-t from-gray-900 to-transparent"></div>
-      <div class="absolute bottom-4 left-4 text-left">
-        <h1 class="text-lg font-semibold text-white">Nike Airmax v2</h1>
-        <p class="mt-2 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-          debitis?
-        </p>
-        <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-          Shop Now →
-        </button>
-      </div>
-    </div>
-    <div class="relative aspect-[16/9]  w-auto rounded-md md:aspect-auto md:h-[400px]">
-      <img
-        src="https://images.unsplash.com/photo-1588099768531-a72d4a198538?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NnwxMTM4MTU1NXx8ZW58MHx8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-        alt="AirMax Pro"
-        class="z-0 h-full w-full rounded-md object-cover"
-      />
-      <div class="absolute inset-0 rounded-md bg-gradient-to-t from-gray-900 to-transparent"></div>
-      <div class="absolute bottom-4 left-4 text-left">
-        <h1 class="text-lg font-semibold text-white">Nike Airmax v2</h1>
-        <p class="mt-2 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-          debitis?
-        </p>
-        <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-          Shop Now →
-        </button>
-      </div>
-    </div>
-    <div class="relative aspect-[16/9]  w-auto rounded-md md:aspect-auto md:h-[400px]">
-      <img
-        src="https://images.unsplash.com/photo-1588099768531-a72d4a198538?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NnwxMTM4MTU1NXx8ZW58MHx8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-        alt="AirMax Pro"
-        class="z-0 h-full w-full rounded-md object-cover"
-      />
-      <div class="absolute inset-0 rounded-md bg-gradient-to-t from-gray-900 to-transparent"></div>
-      <div class="absolute bottom-4 left-4 text-left">
-        <h1 class="text-lg font-semibold text-white">Nike Airmax v2</h1>
-        <p class="mt-2 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-          debitis?
-        </p>
-        <button class="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-          Shop Now →
-        </button>
-      </div>
-    </div>
-  </div>
+<div id="container" class="flex justify-evenly mt-[4rem]  w-[100%] m-auto">
+  <div class="w-[30%] ml-[3rem] mt-3" id="container2" >
+      <div class="flex-col justify-around items-center w-[15rem] shadow-[rgba(0,0,0,0.02)_0px_1px_3px_0px,rgba(27,31,35,0.15)_0px_0px_0px_1px] ">
+          <div id="category" class="py-3">
+              <div>
+                  <h1 class="text-2xl mb-[0.5] ml-[2rem]">Category</h1>
+              </div>
+              <div class="w-90% ml-[2rem] mb-[3rem] text-[#B6B6B6]">
+                <tr><td><p class="hover:text-[#4ECB71]">Indoor</p><td><tr>
+                  <tr><td><p class="hover:text-[#4ECB71]">Outdoor</p><td><tr>
+                  <tr><td><p class="hover:text-[#4ECB71]">Tropical</p><td><tr>
+                  <tr><td><p class="hover:text-[#4ECB71]">Pet Friendly</p><td><tr>
+                  <tr><td><p class="hover:text-[#4ECB71]">Easy Care</p><td><tr>
+              </div>
+              <div>
+                <h1 class="text-2xl ml-[2rem]">Price</h1>
+                <div class="max-w-md mx-auto w-[80%]">
+                  
+                  <input onchange="updateValue()"
+                      type="range"
+                      min="0"
+                      max="20000"
+                      step="1"
+                      value="0"
+                      class="w-full mt-2"
+                      id="valueSlider"
+                  >
+                  <div class="relative mt-2">
+                      <div id="valuePopup" class="absolute bg-gray-800 text-white text-xs px-2 py-1 rounded-md">
+                          Rs0
+                      </div>
+                  </div>
+              </div>
 
+              </div>
+              <div class="pb-[2rem] flex justify-between ml-[1rem] mt-[5rem]" id = "rating-product price-product">
+                <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2  mr-10 h-10 w-[50rem]">Apply</button>
+                <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]   mr-10 h-10 w-[50rem]">Reset</button>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="w-[100%] grid grid-cols-3 gap-10 ">
+    <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+      <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
+          <img
+        src="../static/images/indoor.svg"
+        alt="AirMax Pro"
+        class="z-0 h-full w-full rounded-md object-cover"/>
+      </div>
+        
+          <div class="  text-left">
+            <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+            <p class="mt-2 text-sm ">Rs 1000</p>
+            <p class="mt-2 text-sm">Indoor</p>
+            <p class="mt-2 text-sm text-gray-300">
+                The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+              </p>
+              <div class="flex justify-between">
+                  <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[2rem] mt-10 mr-10 h-10 w-[50rem]">Add to Cart</button>
+              </div>
+          </div>
+      
+    </div> 
+    <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px]">
+      <div class=" rounded-md md:aspect-auto w-[100%] h[60%%] rounded-lg overflow-hidden">
+          <img
+        src="../static/images/indoor.svg"
+        alt="AirMax Pro"
+        class="z-0 h-full w-full rounded-md object-cover"/>
+      </div>
+        
+          <div class=" text-left">
+            <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+            <p class="mt-2 text-sm ">Rs 1000</p>
+            <p class="mt-2 text-sm">Indoor</p>
+            <p class="mt-2 text-sm text-gray-300">
+                The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+              </p>
+              <div class="pb-[2rem] flex justify-between">
+                  <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[2rem] mt-10 mr-10 h-10 w-[50rem]">Add to Cart</button>
+              </div>
+          </div>
+      
+    </div> 
+    <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px]">
+      <div class=" rounded-md md:aspect-auto w-[100%] h[60%%] rounded-lg overflow-hidden">
+          <img
+        src="../static/images/indoor.svg"
+        alt="AirMax Pro"
+        class="z-0 h-full w-full rounded-md object-cover"/>
+      </div>
+        
+          <div class="  text-left">
+            <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+            <p class="mt-2 text-sm ">Rs 1000</p>
+            <p class="mt-2 text-sm">Indoor</p>
+            <p class="mt-2 text-sm text-gray-300">
+                The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+              </p>
+              <div class="pb-[2rem] flex justify-between">
+                  <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[2rem] mt-10 mr-10 h-10 w-[50rem]">Add to Cart</button>
+              </div>
+          </div>
+      
+    </div> 
+    <div class=" w-[22rem]  p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px]">
+      <div class=" rounded-md md:aspect-auto w-[100%] h[60%%] rounded-lg overflow-hidden">
+          <img
+        src="../static/images/indoor.svg"
+        alt="AirMax Pro"
+        class="z-0 h-full w-full rounded-md object-cover"/>
+      </div>
+        
+          <div class="  text-left">
+            <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
+            <p class="mt-2 text-sm ">Rs 1000</p>
+            <p class="mt-2 text-sm">Indoor</p>
+            <p class="mt-2 text-sm text-gray-300">
+                The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
+              </p>
+              <div class="pb-[2rem] flex justify-between">
+                  <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[2rem] mt-10 mr-10 h-10 w-[50rem]">Add to Cart</button>
+              </div>
+          </div>
+    </div> 
+    
+  </div>
+</div>
+</div>
+<!-- <button onclick="updateValue()"> rabi</button> -->
 {% endblock %}
 </body>
+
 </html>
+
+
+
 
 
 
