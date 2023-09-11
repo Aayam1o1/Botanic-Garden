@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     
+    
 </head>
 <body>
-{% extends 'base.html' %}
+
 {% block content %}
 
 
@@ -30,52 +33,38 @@
                                 Sign In
                             </a>
                         </p>
-                        <form action="#" method="POST" class="mt-8">
+                        <form action="" method="POST" class="mt-8" enctype="multipart/form-data">
                            {% csrf_token %} 
-                            
-                        
                         <div class="">
-                    
-                            <div class="">
-                                <input
-                                    class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                    type="text"
-                                    name="username"
-                                    placeholder="Username"
-                                    id="username"/>
-                            </div>
-                            <div class="mt-5">
-                            
-                                <div class="mt-2">
-                                    <input
-                                        class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                        type="email"
-                                        name="email"
-                                        placeholder="Email"
-                                        id="email"/>
+                            <div class=" flex-col justify-evenly ">
+                                <div class="border-4 border-[#B6B6B6] rounded-full w-[6rem] mb-3 ml-[9.5rem]" id="imgEdit">
+                                    <img src="{{form.profile_picture}}" alt="no image" class="h-[6rem] w-[6rem] rounded-full pb-3">
                                 </div>
-                          </div>
-                          <div class="mt-5">
-                            
-                            <div class="mt-2">
-                                <input
-                                    class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                    type="password"
-                                    name="password"
-                                    placeholder="password"
-                                    id="password"/>
-                            </div>
-                        </div>
-                            <div class="mt-5">
-                                <div class="mt-2">
-                                    <input
-                                        class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                        type="password"
-                                        name="rePassword"
-                                        placeholder="Re-enter password"
-                                        id="rePassword"/>
+                                <!-- <div class="mb-5">
+                                    <input type="image" width="48" height="48" class="inline-flex w-[30%] items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-5 text-white hover:bg-black/80" value="Add Image">
+                                </div> -->
+                                <div class="mb-4">
+                                    <label for="editImage" class="block text-gray-700 font-bold mb-2">Upload Image</label>
                                 </div>
-                        </div>
+                            </div>
+                            <div class="mt-6">
+                                {% render_field form.first_name class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" placeholder="First Name" type="text" %}
+                            </div>
+                            <div class="mt-6">
+                                {% render_field form.last_name class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" placeholder="last Name" type="text" %}
+                            </div>
+                            <div class="mt-6">
+                                {% render_field form.username class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Username" type="text" %}
+                            </div>
+                            <div class="mt-6">
+                                {% render_field form.email class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email" type="email" %}
+                            </div>
+                            <div class="mt-6">
+                                {% render_field form.password1 class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Password" type="password" %}
+                            </div>
+                            <div class="mt-6">
+                                {% render_field form.password2 class="flex h-10 w-[25rem] rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Rewrite Password" type="password" %}
+                            </div>
                         
                             <div class="mt-5 mb-[6rem]">
                                 <button
@@ -96,14 +85,18 @@
                                         <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </button>   
+                                
                           </div>
-                        </form>    
+                        </form>   
+                        
+                        
                         </div>
                     
                     </div>          
                 </div>
             </div>
         </div>
+        
     </div>
     
 
