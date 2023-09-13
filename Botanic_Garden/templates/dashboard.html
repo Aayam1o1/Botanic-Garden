@@ -1,16 +1,54 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+    <!-- <script src="../static/JS/dashboardscript.js" defer></script> -->
+    <!-- <script src="../static/JS/script.js" defer></script> -->
+    
 </head>
 <body>
-{% extends 'base.html' %}
+
 {% block content %}
 
 <!-- rohan ko copy gareko code -->
 <div class="container  mx-auto mt-[6rem]">
+    <script>
+        console.log("Script is running!");
+        document.addEventListener('DOMContentLoaded', function () {
+        const imageInput = document.querySelector('#imageshow');
+        const selectedImage = document.querySelector('#selectedImage');
+
+        imageInput.addEventListener('change', function () {
+        console.log("File selected!"); // Debugging statement
+
+        if (this.files && this.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                console.log("File loaded!"); // Debugging statement
+                selectedImage.src = e.target.result;
+                selectedImage.classList.remove('hidden');
+            };
+
+            reader.readAsDataURL(this.files[0]);
+        } else {
+            console.log("No file selected!"); // Debugging statement
+            selectedImage.src = '';
+            selectedImage.classList.add('hidden');
+        }
+        });
+        });
+
+
+
+    </script>
         <div class="flex justify-around w-[90%] ml-[6rem]">
          
             <div class="text-center bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg shadow-lg p-6 w-[23rem]">
@@ -32,7 +70,7 @@
 
 <div id="container" class="flex mt-[4rem]">
     <div class="w-[30%] ml-[3rem]" id="container2" >
-        <div class="flex-col justify-around items-center w-[30rem] " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;">
+        <div class="flex-col justify-around items-center w-[30rem]" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;">
             <div>
                 <h1 class="text-1xl text-[#B6B6B6] text-center">Market Place</h1>
             </div>
@@ -44,236 +82,126 @@
                     <img src="../static/images/customer2.svg" alt="" class="h-[6rem] w-[6rem] rounded-full pb-3">
                 </div>
                 <div class="text-center pr-[2rem] pt-[2rem]">
-                    <p>{{ first_name }} {{ last_name }}</p>
+                    <p>{{ user.first_name }} {{ user.last_name }}</p>
                 </div>
             </div>
-            <form action="" method="POST" class="mt-8" enctype="multipart/form-data">
+
+
+            <form action="" method="post" class="mt-8" enctype="multipart/form-data">
             {% csrf_token %}
-            <div id="title" class="">
-                <div>
-                    <h1 class="mb-2 ml-[7rem]">Plant name</h1>
-                </div>
-                <!-- <div class=" border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem]">
-                    <input type="text"  name="search-name" placeholder="Plant Name"  autofocus class="h-full w-full outline-none pl-2 ">
-                </div> -->
-                <div class="mt-6">
-                    <label for="{{ form.title.id_for_label }}" class="block text-sm font-medium text-gray-700">Plant Name</label>
-                    {{ form.title }}
-                </div>
-            </div>
+
             
-            <div id="price" class="mt-7">
-                <div>
-                    <h1 class="mb-2 ml-[7rem]">Price</h1>
-                </div>
-                <div class=" border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem]">
-                    <input type="text"  name="search-name" placeholder="Amount"  autofocus class="h-full w-full outline-none pl-2 ">
-                </div>
+            {% render_field form.title class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-10" placeholder="Title" type="" %}
+            
+            {% render_field form.price class=" border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-10"  placeholder="Price" %}
+
+            {% render_field form.category class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] " %}
+
+                    <!-- {% for choice in form.category %}
+            <div class="flex items-center pl-3">
+                <input type="radio" id="id_category_{{ forloop.counter }}" name="category" value="{{ choice.choice_value }}" {% if form.category.value == choice.choice_value %}checked{% endif %}>
+                <label for="id_category_{{ forloop.counter }}" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ choice.choice_label }}</label>
+            </div>
+             {% endfor %} -->
+            <div class="w-[20rem] ml-[6rem] mt-10 mb-10">
+                <img id="selectedImage" src="" alt="Selected Image" class="rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden hidden">
             </div>
 
-            <div id="price" class="mt-7 mb-10">
-                <div>
-                    <h1 class="mb-2 ml-[7rem]">Category</h1>
-                </div>
-                <div class="w-90% ml-[6.5rem]">
-
-                    <ul class="w-[77%]  text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                            <div class="flex items-center pl-3">
-                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
-                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Indoor</label>
-                            </div>
-                        </li>
-                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                            <div class="flex items-center pl-3">
-                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
-                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Outdoor</label>
-                            </div>
-                        </li>
-                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                            <div class="flex items-center pl-3">
-                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
-                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tropical</label>
-                            </div>
-                        </li>
-                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                            <div class="flex items-center pl-3">
-                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
-                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pet Friendly</label>
-                            </div>
-                        </li>
-                        <li class="w-full h-[2.5rem]  border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                            <div class="flex items-center pl-3">
-                                <input id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 ">
-                                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Easy care</label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="image" class="ml-[6rem] mt-5 border-2 border-solid w-[60%] h[50%] rounded-lg overflow-hidden">
-                <img src="../static/images/indoor.svg" alt="" class=" w-full h-full">
-            </div>
-            <div class="pb-[2rem]">
-                <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[9.5rem] mt-5 mr-10 h-10 w-40">Add image</button>
-            </div>
-
-            </form>
-        
-            <!-- <div id="uploadImage" class="w-[7rem] ml-[4.5rem] flex justify-around">
-                <img src="../static/images/customer1.svg" alt="">
-                <img src="../static/images/customer1.svg" alt="">
-                <img src="../static/images/customer1.svg" alt="">
-            </div>
-            <div id="button1" class="mt-5  w-full">
-                <button class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mr-10 h-10 w-40">upload Photo</button>
-                <p>Upload upto 3 photos</p>
-            </div> -->
-        </div>
+            {% render_field form.image class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-20" id="imageshow" %}
+         </div>
     </div>
 
-    <div class="w-[30%] ml-[8rem]" id="container2">
-        <div>
-            <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Plant review</h1>
-        </div>
-        
-        <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-            <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
-                <img
-              src="../static/images/indoor.svg"
-              alt="AirMax Pro"
-              class="z-0 h-full w-full rounded-md object-cover"/>
+    <div class="ml-[5rem]" id="description-container">
+        <div >
+            <div>
+                <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Add Description</h1>
             </div>
-              
-                <div class="  text-left">
-                  <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
-                  <p class="mt-2 text-sm">{{ first_name }} {{ last_name }}</p>
-                  <p class="mt-2 text-sm ">Rs 1000</p>
-                  <p class="mt-2 text-sm">Indoor</p>
-                  <p class="mt-2 text-sm text-gray-300">
-                      The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
-                    </p>
-                    <div class="flex justify-between">
-                        <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[2rem] mt-10 mr-10 h-10 w-[50rem]">Add to Sell</button>
-                    </div>
-                </div>
-            
-          </div> 
-          <form action="" method="POST" class="mt-8">
-    </div>
-    <div id="description"  >
-        <div>
-            <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Add description</h1>
         </div>
-        <div class=" border-2 border-solid rounded-lg ml-[3rem] w-[20rem] h-[40vh]">
-            <textarea type="textarea"  name="search-name" placeholder="Description of plant"  autofocus class="h-full w-full outline-none pl-2 "></textarea>
-        </div>
+        {% render_field form.description class=" border-2 border-solid rounded-lg p-2 ml-[3rem] w-[20rem] h-[40vh] outline-none pl-2" placeholder="Description of Plants" %}
+        
         <div class="pb-[5rem]">
-            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[9rem] mt-10 mr-10 h-10 w-40">Add description</button>
+            <button type="submit" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[8rem] mt-7 mr-10 h-10 w-40">Add Plant</button>
         </div>
+        
+        
+        {% if messages %}
+        
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+        
+        {% endif %}
+        
     </div>
-</div>  
+            
     </form>
-<div class="" id="container4">
+    <div class="w-[30%] ml-[8rem]" id="container2" >
+        <div>
+            <h1 class=" text-3xl mt-[2rem] ml-[5rem] mb-[3rem] text-[#4ECB71]">Recent Plant</h1>
+        </div>
+        
+        <div>
+            {% if no_plants_message %}
+                  <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ plants_data_first.no_plants_message }}</div>
+            {% else %}
+             
+                <div class=" w-[22rem] h-[35rem]  p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+                  <div class=" rounded-md md:aspect-auto w-[20rem] h-[15rem] rounded-lg overflow-hidden">
+                    <img src="{{ plants_data_first.image.url }}" alt="{{ plants_data_first.title }}" class="z-0 w-full h-full rounded-md object-cover" />
+                  </div>
+                  <div class=" text-left">
+                    <h1 class="text-lg font-semibold mt-4">{{ plants_data_first.user.title }}</h1>
+                    <p class="mt-2 text-sm">{{ plants_data_first.user.first_name }} {{ plants_data_first.user.last_name }}</p>
+                    <p class="mt-2 text-sm">Rs {{ plants_data_first.price }}</p>
+                    <p class="mt-2 text-sm">{{ plants_data_first.category }}</p>
+                    <p class="mt-2 text-sm text-gray-300">{{ plants_data_first.description|truncatewords:20 }}</p>
+                    <div class="flex justify-around">
+                        <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[1rem] mt-10 mr-10  w-[10rem]">Edit</button>
+                        <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10  w-[10rem]">Delete</button>
+                    </div>
+                  </div>
+                </div> 
+             
+            {% endif %}
+          </div>
+    </div> 
+    
+    
+</div>  
+    
+<div class="w-full" id="container4">
     <div id="feedback" class="mt-[7rem] mb-20">
         <div class="text-center text-5xl mb-10">
             <h1>Your Plants</h1>
         </div>
-        <div class="grid grid-cols-4 gap-6 ml-[5rem] ">
-            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
-                    <img
-                  src="../static/images/indoor.svg"
-                  alt="AirMax Pro"
-                  class="z-0 h-full w-full rounded-md object-cover"/>
-                </div>
-                  
-                    <div class="  text-left">
-                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
-                      <p class="mt-2 text-sm">{{ first_name }} {{ last_name }}</p>
-                      <p class="mt-2 text-sm ">Rs 1000</p>
-                      <p class="mt-2 text-sm">Indoor</p>
-                      <p class="mt-2 text-sm text-gray-300">
-                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
-                        </p>
-                        <div class="pb-[2rem] flex justify-between">
-                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
-                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
-                        </div>
-                    </div>
-            </div>
-            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
-                    <img
-                  src="../static/images/indoor.svg"
-                  alt="AirMax Pro"
-                  class="z-0 h-full w-full rounded-md object-cover"/>
-                </div>
-                  
-                    <div class="  text-left">
-                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
-                      <p class="mt-2 text-sm">{{ first_name }} {{ last_name }}</p>
-                      <p class="mt-2 text-sm ">Rs 1000</p>
-                      <p class="mt-2 text-sm">Indoor</p>
-                      <p class="mt-2 text-sm text-gray-300">
-                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
-                        </p>
-                        <div class="pb-[2rem] flex justify-between">
-                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
-                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
-                        </div>
-                    </div>
-            </div>
-            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
-                    <img
-                  src="../static/images/indoor.svg"
-                  alt="AirMax Pro"
-                  class="z-0 h-full w-full rounded-md object-cover"/>
-                </div>
-                  
-                    <div class="  text-left">
-                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
-                      <p class="mt-2 text-sm">{{ first_name }} {{ last_name }}</p>
-                      <p class="mt-2 text-sm ">Rs 1000</p>
-                      <p class="mt-2 text-sm">Indoor</p>
-                      <p class="mt-2 text-sm text-gray-300">
-                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
-                        </p>
-                        <div class="pb-[2rem] flex justify-between">
-                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
-                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
-                        </div>
-                    </div>
-            </div>
-            <div class=" w-[22rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-                <div class=" rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden">
-                    <img
-                  src="../static/images/indoor.svg"
-                  alt="AirMax Pro"
-                  class="z-0 h-full w-full rounded-md object-cover"/>
-                </div>
-                  
-                    <div class="  text-left">
-                      <h1 class="text-lg font-semibold mt-4">Peperomia obtusifolia</h1>
-                      <p class="mt-2 text-sm">{{ first_name }} {{ last_name }}</p>
-                      <p class="mt-2 text-sm ">Rs 1000</p>
-                      <p class="mt-2 text-sm">Indoor</p>
-                      <p class="mt-2 text-sm text-gray-300">
-                          The Peperomia obtusifolia, also known as the baby rubber plant, is an easy-going houseplant characterized by its thick, succulent-like green leaves. A popular variety of Peperomia, it does not need much to thrive and might even reward you with white flower spikes once a year. 
-                        </p>
-                        <div class="pb-[2rem] flex justify-between">
-                            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-2 mt-10 mr-10 h-10 w-[50rem]">Edit </button>
-                            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10 h-10 w-[50rem]">Delete</button>
-                        </div>
-                    </div>
-            </div>
+        <div class="grid grid-cols-4 gap-6  ">
+            {% if no_plants_message %}
+        <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ no_plants_message }}</div>
+  {% else %}
+    {% for plant in plants_data %}
+      <div class=" w-[22rem] h-[35rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ml-[2rem]">
+        <div class=" rounded-md md:aspect-auto w-[20rem] h-[15rem] rounded-lg overflow-hidden">
+          <img src="{{ plant.image.url }}" alt="{{ plant.title }}" class="z-0 w-full h-full rounded-md object-cover" />
         </div>
+        <div class=" text-left">
+          <h1 class="text-lg font-semibold mt-4">{{ plant.title }}</h1>
+          <p class="mt-2 text-sm">{{ plant.user.first_name }} {{ plant.user.last_name }}</p>
+          <p class="mt-2 text-sm">Rs {{ plant.price }}</p>
+          <p class="mt-2 text-sm">{{ plant.category }}</p>
+          <p class="mt-2 text-sm text-gray-300">{{ plant.description|truncatewords:20 }}</p>
+          <div class="flex justify-around">
+            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[1rem] mt-10 mr-10  w-[10rem]">Edit</button>
+            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10  w-[10rem]">Delete</button>
+          </div>
+        </div>
+      </div> 
+    {% endfor %}
+  {% endif %}
+          </div>   
     </div>
 </div>
-
-    
 {% endblock %}
 </body>
+<!-- <script src="../static/JS/dashboardscript.js" defer></script> -->
+
 </html>

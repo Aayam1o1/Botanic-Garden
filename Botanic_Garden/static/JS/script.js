@@ -22,8 +22,15 @@ function updateValue() {
 }
 
 // Attach the custom function to the input event
-const valueSlider = document.getElementById('valueSlider');
-valueSlider.addEventListener('input', updateValue);
+// const valueSlider = document.getElementById('valueSlider');
+// valueSlider.addEventListener('input', updateValue);
 
 // Display the tooltip initially when the page loads
 window.addEventListener('DOMContentLoaded', updateValue);
+
+
+
+function lol()
+    {
+        console.log("script js ko")
+    }

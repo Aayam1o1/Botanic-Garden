@@ -16,5 +16,12 @@ class CreateUserForm(UserCreationForm):
 class UserUploadedPlantForm(ModelForm):
     class Meta:  # Capitalize "Meta"
         model = UserUploadPlants
+        widgets = {
+            'description': forms.Textarea(attrs={'rows':4, 'cols':15}),
+            'price': forms.NumberInput(attrs={'min': 0, 'step': 0.01}),
+        }
+        exclude = ('user',)
         fields = "__all__"
+        
+        
 

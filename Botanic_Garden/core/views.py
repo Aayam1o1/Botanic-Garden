@@ -13,16 +13,29 @@ from django.core.files.base import ContentFile
 from .forms import *
 from django.contrib import messages
 from .models import *
-
+from django.core.paginator import Paginator
+from math import ceil
 
 def homePage(request):
     
     return render(request, "homePage.html")
 
 
-def plants(request):
 
-    return render(request, "plants.html")
+def plants(request, category=None):
+    # Query the database to get the plants data
+    plants_data = UserUploadPlants.objects.all()  # You can add filters if needed
+
+    print("Number of plants retrieved:", len(plants_data))
+
+    context = {
+        'plants_data': plants_data,
+    }
+    
+    if not plants_data:
+        context['no_plants_message'] = "Sorry, There are currently no plants available"
+
+    return render(request, "plants.html", context)
 
 
 
@@ -82,50 +95,52 @@ def logoutPage(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    form = UserUploadPlants
+    form = UserUploadedPlantForm()
+    #filter used to get the data of the user logged in only
     
+    plants_data = UserUploadPlants.objects.filter(user = request.user)
+    plants_data_first = UserUploadPlants.objects.filter(user=request.user).order_by('-id').first()
     if request.user.is_authenticated:
         first_name = request.user.first_name
-        last_name = request.user.last_name
-        
-    AllItems = UserUploadPlants.objects.filter(user = request.user).order_by('-id')
     
-    total_plants = UserUploadPlants.objects.filter(user=request.user).count()     
-        
+    #filtering only items that is uploaded by current logged in user
+    
     context={
-        'form': form,
-        'AllItems': AllItems,
-        'first_name': first_name,
-        'last_name': last_name,
-        }
-     
-    return render(request, "dashboard.html",context)
-
-@login_required(login_url='login')
-def addPlants(request):
-    form = UserUploadedPlantForm()
+        'form':form,
+        'plants_data': plants_data,
+        'first_name':first_name,
+        'plants_data_first': plants_data_first
+    } 
     
     if request.method == 'POST':
         form = UserUploadedPlantForm(request.POST, request.FILES)
+        print("vayp")
+
         
         if form.is_valid():
-            instance = form.save(commit=False)  #commit false helps in not saving form
+            
+            instance = form.save(commit=False) #commit=False helps to not to save the form
             instance.user = request.user
             instance.save()
-            
-            # Creating a new empty form instance
-            messages.sucess(request, "Succesfully added new plant")
-            
-            return redirect('addPlants')
         
+            messages.success(request, "Successfully Added")
+        
+            return redirect('dashboard')
         else:
-            return render(request, 'dashboard.html')
+            print(form.errors)
     
-    context = {
-        'form': form,
-    }
+    
+    else:
+        return render(request, 'dashboard.html', context)
+    
+    if not plants_data:
+        print('vayena')
+        context['no_plants_message'] = "Sorry, There are currently no plants available"
+    
+    return render(request, "dashboard.html", context)
+    
 
-    return render(request, 'dashboard.html', context)
+    
 
 
 
