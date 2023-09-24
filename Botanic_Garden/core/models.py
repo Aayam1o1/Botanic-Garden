@@ -28,3 +28,14 @@ class UserUploadPlants(models.Model):
     def __str__(self):
         return self.title
 
+
+class Cart(models.Model):
+    title = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, choices=categoryChoice)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image= models.ImageField(upload_to = "cart/")
+    plant_id=models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.title

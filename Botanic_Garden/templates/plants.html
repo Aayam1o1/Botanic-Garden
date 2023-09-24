@@ -72,27 +72,44 @@
 
   
 <div class="w-[100%] grid grid-cols-3 gap-9 mr-[2rem]">
-  {% if no_plants_message %}
-        <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ no_plants_message }}</div>
-  {% else %}
-    {% for plant in plants_data %}
-      <div class=" w-[22rem] h-[35rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-        <div class=" rounded-md md:aspect-auto w-[20rem] h-[15rem] rounded-lg overflow-hidden">
-          <img src="{{ plant.image.url }}" alt="{{ plant.title }}" class="z-0 w-full h-full rounded-md object-cover" />
-        </div>
-        <div class=" text-left">
-          <h1 class="text-lg font-semibold mt-4">{{ plant.title }}</h1>
-          <p class="mt-2 text-sm">{{ plant.user.first_name }} {{ plant.user.last_name }}</p>
-          <p class="mt-2 text-sm">Rs {{ plant.price }}</p>
-          <p class="mt-2 text-sm">{{ plant.category }}</p>
-          <p class="mt-2 text-sm text-gray-300">{{ plant.description|truncatewords:20 }}</p>
-          <div class="">
-            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[5rem] mt-10 mr-10  w-[10rem]">Add to Cart</button>
+ 
+    {% if no_plants_message %}
+          <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ no_plants_message }}</div>
+    {% else %}
+      {% for plant in plants_data %}
+        <div class=" w-[22rem] h-[35rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
+          <div class=" w-[20rem] mb-5">
+            <img src="{{ plant.image.url }}" alt="{{ plant.title }}" class="rounded-md md:aspect-auto w-full h-[15rem] rounded-lg" />
           </div>
+          
+          <form action="" method="post">
+          {% csrf_token %}
+          <div class=" text-left">
+            <h1 class="text-lg font-semibold mt-4">{{ plant.title }}</h1>
+            <p class="mt-2 text-sm">{{ plant.user.first_name }} {{ plant.user.last_name }}</p>
+            <p class="mt-2 text-sm">Rs {{ plant.price }}</p>
+            <p class="mt-2 text-sm">{{ plant.category }}</p>
+            <p class="mt-2 text-sm text-gray-300">{{ plant.description|truncatewords:20 }}</p>
+            <div class="">
+                <!-- Pass the plant ID to the addtocart() function -->
+                <button onclick="addtocart('{{ plant.id }}')" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[5rem] mt-10 mr-10  w-[10rem]">Add to Cart</button>
+            </div>
         </div>
-      </div> 
-    {% endfor %}
-  {% endif %}
+        </div> 
+      {% endfor %}
+    {% endif %}
+  
+  
+
+    <script>
+      // JavaScript function to add the plant to the cart
+      function addtocart(plant_id) {
+          // You can use the plant_id to perform any necessary actions, such as adding the item to the cart
+          // For example, you can make an AJAX request to add the item to the cart on the server-side.
+          alert("Item with ID " + plant_id + " added to your cart!");
+      }
+  </script>
+  
 </div>
 </div>
 <!-- <button onclick="updateValue()"> rabi</button> -->

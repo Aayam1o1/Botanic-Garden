@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+    
     <!-- <script src="../static/JS/dashboardscript.js" defer></script> -->
     <!-- <script src="../static/JS/script.js" defer></script> -->
     
@@ -103,11 +104,44 @@
                 <label for="id_category_{{ forloop.counter }}" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ choice.choice_label }}</label>
             </div>
              {% endfor %} -->
-            <div class="w-[20rem] ml-[6rem] mt-10 mb-10">
-                <img id="selectedImage" src="" alt="Selected Image" class="rounded-md md:aspect-auto w-[100%] h[60%] rounded-lg overflow-hidden hidden">
-            </div>
 
-            {% render_field form.image class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-20" id="imageshow" %}
+
+             
+             {% if form %}
+            <div class="w-[20rem] ml-[6rem] mt-10 mb-10">
+                <img id="selectedImage" src="{{ plants_data.image.url }}" alt="lol" class="rounded-md md:aspect-auto w-full h-[15rem] rounded-lg hidden">
+            </div>
+            
+            {% if plant %}
+                <div class=" w-[20rem] mb-5 ml-[5.9rem]">
+                    <img src="{{ plant.image.url }}" alt="{{ plant.title }}" class="rounded-md md:aspect-auto w-full h-[15rem] rounded-lg" id="image-preview" id="image-input"/>
+                </div>
+                {% if plant.image.url %}
+                    <input type="file" name="{{ form.image.name }}" class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-20" id="image-input">
+                {% endif %} 
+            {% else %}
+                <input type="file" name="{{ form.image.name }}" class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-20" id="image-input">
+            {% endif %}
+            {% endif %} 
+            <script>
+                const imageInput = document.getElementById('image-input');
+                const imagePreview = document.getElementById('image-preview');
+            
+                imageInput.addEventListener('change', function() {
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+            
+                        reader.onload = function(e) {
+                            imagePreview.src = e.target.result;
+                        };
+            
+                        reader.readAsDataURL(this.files[0]);
+                    } else {
+                        // Clear the preview when no file is selected
+                        imagePreview.src = '';
+                    }
+                });
+            </script>
          </div>
     </div>
 
@@ -144,24 +178,30 @@
             {% if no_plants_message %}
                   <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ plants_data_first.no_plants_message }}</div>
             {% else %}
-             
+            {% if plants_data %}
                 <div class=" w-[22rem] h-[35rem]  p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ">
-                  <div class=" rounded-md md:aspect-auto w-[20rem] h-[15rem] rounded-lg overflow-hidden">
-                    <img src="{{ plants_data_first.image.url }}" alt="{{ plants_data_first.title }}" class="z-0 w-full h-full rounded-md object-cover" />
+                  <div class=" w-[20rem] mb-5">
+                    <img src="{{ plants_data_first.image.url }}" alt="{{ plants_data_first.title }}" class="rounded-md md:aspect-auto w-full h-[15rem] rounded-lg" />
                   </div>
+            
+                  
                   <div class=" text-left">
-                    <h1 class="text-lg font-semibold mt-4">{{ plants_data_first.user.title }}</h1>
+                    <h1 class="text-lg font-semibold mt-4">{{ plants_data_first.title }}</h1>
                     <p class="mt-2 text-sm">{{ plants_data_first.user.first_name }} {{ plants_data_first.user.last_name }}</p>
                     <p class="mt-2 text-sm">Rs {{ plants_data_first.price }}</p>
                     <p class="mt-2 text-sm">{{ plants_data_first.category }}</p>
                     <p class="mt-2 text-sm text-gray-300">{{ plants_data_first.description|truncatewords:20 }}</p>
                     <div class="flex justify-around">
-                        <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[1rem] mt-10 mr-10  w-[10rem]">Edit</button>
-                        <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10  w-[10rem]">Delete</button>
+                        {% if plants_data_first %}
+                            <a href="{% url 'editPlant' plants_data_first.id %}" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] pl-10 mt-10 mr-10  w-[10rem] ml-6">Edit</a>
+                        {% endif %}
+                        <a href="{% url 'deletePlant' plants_data_first.id %}" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] pl-7 mt-10 mr-11  w-[10rem]">Delete</a>
                     </div>
                   </div>
                 </div> 
-             
+                {% else %}
+                <p>No plants available <p>
+            {% endif %}
             {% endif %}
           </div>
     </div> 
@@ -174,30 +214,75 @@
         <div class="text-center text-5xl mb-10">
             <h1>Your Plants</h1>
         </div>
-        <div class="grid grid-cols-4 gap-6  ">
+        <div class="grid grid-cols-4">
             {% if no_plants_message %}
-        <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ no_plants_message }}</div>
-  {% else %}
-    {% for plant in plants_data %}
-      <div class=" w-[22rem] h-[35rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] ml-[2rem]">
-        <div class=" rounded-md md:aspect-auto w-[20rem] h-[15rem] rounded-lg overflow-hidden">
-          <img src="{{ plant.image.url }}" alt="{{ plant.title }}" class="z-0 w-full h-full rounded-md object-cover" />
+                <div class="text-center text-red-500 text-4xl w-[50rem] mt-5">{{ no_plants_message }}</div>
+            {% else %}
+                {% if plants_data %}
+                    {% for plant in plants_data %}
+                        <div class="w-[22rem] h-[35rem] p-4 shadow-[rgba(0,0,0,0.1)_0px_4px_12px] mx-[1rem] mr-[2rem]">
+                            <div class="w-[20rem] mb-5">
+                                <img src="{{ plant.image.url }}" alt="{{ plant.title }}" class="rounded-md md:aspect-auto w-full h-[15rem] rounded-lg " />
+                            </div>
+                            <div class="text-left">
+                                <h1 class="text-lg font-semibold mt-4">{{ plant.title }}</h1>
+                                <p class="mt-2 text-sm">{{ plant.user.first_name }} {{ plant.user.last_name }}</p>
+                                <p class="mt-2 text-sm">Rs {{ plant.price }}</p>
+                                <p class="mt-2 text-sm">{{ plant.category }}</p>
+                                <p class="mt-2 text-sm text-gray-300">{{ plant.description|truncatewords:20 }}</p>
+                                <div class="flex justify-around">
+                                    <button class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] pl-8 mt-10 mr-10 w-[10rem] edit-plant-button" data-plant-id="{{ plant.id }}">Edit</button>
+                                    <a href="{% url 'deletePlant' plant.id %}" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] pl-8 mt-10 mr-10  w-[10rem]">Delete</a>
+                                    <form class="edit-plant-form hidden" data-plant-id="{{ plant.id }}">
+                                        <!-- Include form fields for editing the plant details -->
+                                        {% csrf_token %}
+                                        {% render_field form.title class="border-2 border-solid rounded-lg pl-1 pr-1 w-[60%] h-[2rem] ml-[6.7rem] mb-10" placeholder="Title" type="" %}
+                                        <!-- Add other form fields here -->
+                                        <div class="plant-details text-left">
+                                            
+                                            <h1 class="text-lg font-semibold mt-4">{{ plant.title }}</h1>
+                                            <p class="mt-2 text-sm">{{ plant.user.first_name }} {{ plant.user.last_name }}</p>
+                                            <p class="mt-2 text-sm">Rs {{ plant.price }}</p>
+                                            <p class="mt-2 text-sm">{{ plant.category }}</p>
+                                            <img src="{{ plants_data.image.url }}" alt="{{ plants_data.title }}" class="rounded-md md:aspect-auto w-full h-[15rem] rounded-lg" />
+                                            <p class="mt-2 text-sm text-gray-300">{{ plant.description|truncatewords:20 }}</p>
+                                            
+                                        </div>
+                                        <button type="submit" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[8rem] mt-7 mr-10 h-10 w-40">Update Plant</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No plants available</p>
+                {% endif %}
+            {% endif %}
         </div>
-        <div class=" text-left">
-          <h1 class="text-lg font-semibold mt-4">{{ plant.title }}</h1>
-          <p class="mt-2 text-sm">{{ plant.user.first_name }} {{ plant.user.last_name }}</p>
-          <p class="mt-2 text-sm">Rs {{ plant.price }}</p>
-          <p class="mt-2 text-sm">{{ plant.category }}</p>
-          <p class="mt-2 text-sm text-gray-300">{{ plant.description|truncatewords:20 }}</p>
-          <div class="flex justify-around">
-            <button id="shopnow" class="bg-[#4ECB71] text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s] ml-[1rem] mt-10 mr-10  w-[10rem]">Edit</button>
-            <button id="shopnow" class="bg-red-800 text-white p-2 rounded hover:animate-bounce transition-all duration-[0.45s]  mt-10 mr-10  w-[10rem]">Delete</button>
-          </div>
-        </div>
-      </div> 
-    {% endfor %}
-  {% endif %}
-          </div>   
+        
+        {% comment %} <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const editButtons = document.querySelectorAll(".edit-plant-button");
+                const editForms = document.querySelectorAll(".edit-plant-form");
+        
+                editButtons.forEach((button, index) => {
+                    button.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        const plantId = button.getAttribute("data-plant-id");
+                        toggleEditMode(plantId);
+                    });
+                });
+        
+                function toggleEditMode(plantId) {
+                    // Toggle between viewing mode and editing mode for the specified plant
+                    const form = document.querySelector(`.edit-plant-form[data-plant-id="${plantId}"]`);
+                    if (form) {
+                        form.classList.toggle("hidden");
+                    }
+                }
+            });
+        </script> {% endcomment %}
+        
     </div>
 </div>
 {% endblock %}
