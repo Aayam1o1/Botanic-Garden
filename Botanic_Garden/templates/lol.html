@@ -1,0 +1,197 @@
+
+Rabi
+Rabi Giri
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .left-section h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .left-section p {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .left-section form {
+            margin-top: 2rem;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            font-weight: medium;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            height: 2.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            width: 100%;
+            height: 2.5rem;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .right-section {
+            height: 100%;
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .space-y-3 {
+            margin-top: 1.5rem;
+        }
+
+        .social-button {
+            width: 100%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .social-button:hover {
+            background-color: #f4f4f4;
+        }
+
+        .social-button svg {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid">
+        <div class="left-section">
+            <div>
+                <h2>Sign in</h2>
+                <p>Don't have an account? <a href="#" title="" class="font-semibold text-black">Create a free account</a></p>
+                <form action="#" method="POST">
+                    <div>
+                        <label for="">Email address</label>
+                        <div>
+                            <input type="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <label for="">Password</label>
+                                <a href="#" title="" class="text-sm font-semibold text-black">Forgot password?</a>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button">Get started</button>
+                    </div>
+                </form>
+                <div class="space-y-3">
+                    <div class="social-button">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                        Sign in with Google
+                    </div>
+                    <div class="social-button">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z">
+                                </path>
+                            </svg>
+                        </span>
+                        Sign in with Facebook
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <img src="https://images.unsplash.com/photo-1630673245362-f69d2b93880e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80"
+                alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>
